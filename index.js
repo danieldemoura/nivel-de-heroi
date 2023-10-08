@@ -5,6 +5,7 @@ const rl = readLine.createInterface({
     output: process.stdout,
 })
 
+// função reponsável por fazer a pergunta ao usuário e depois que o usuário digitar retorna uma Promise com o valor do que foi digitado pelo usuário.
 function question(prompt) {
     return new Promise((resolve) => {
         rl.question(prompt, resolve);
@@ -14,6 +15,8 @@ function question(prompt) {
 async function ask() {
     const heroiName = await question("Digite o nome do seu Herói: ");
     const xp = await question(`\nDigite a quantidade de XP do seu Herói entre 1 mil até 10 mil de XP: `);
+
+    // se o número tiver . será removido usando o método replace() e depois é convertido para um número com o método Number()
     const xpOfHero = Number(xp.replace(".", ""));
     let levelOfHero = null;
 
